@@ -1,0 +1,1 @@
+> just a small collection of useful go snippets
