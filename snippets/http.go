@@ -7,7 +7,7 @@ import (
 )
 
 // CreateHTTPServer creates a http server, based on the recommendations from https://blog.cloudflare.com/exposing-go-on-the-internet/
-func CreateHTTPServer() *http.Server {
+func CreateHTTPServer(addr string, hand http.Handler) *http.Server {
 	return &http.Server{
 		ReadTimeout:  5 * time.Second,
 		WriteTimeout: 10 * time.Second,
@@ -19,5 +19,7 @@ func CreateHTTPServer() *http.Server {
 				tls.X25519,
 			},
 		},
+		Addr:    addr,
+		Handler: hand,
 	}
 }
